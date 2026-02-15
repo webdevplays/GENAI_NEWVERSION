@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Twitter, Github } from 'lucide-react';
 import { MatrixRain } from './components/MatrixRain';
 import { Hero } from './components/Hero';
 import { AboutWorld } from './components/AboutWorld';
@@ -19,6 +20,8 @@ const App: React.FC = () => {
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [terminalMessage, setTerminalMessage] = useState("");
   const [iframeOpen, setIframeOpen] = useState(false);
+  const [currentIframeUrl, setCurrentIframeUrl] = useState("");
+  const [currentIframeTitle, setCurrentIframeTitle] = useState("");
 
   useEffect(() => {
     // Initial loading simulation
@@ -33,7 +36,9 @@ const App: React.FC = () => {
     setTerminalOpen(true);
   };
 
-  const openOvernet = () => {
+  const openIframe = (url: string, title: string) => {
+    setCurrentIframeUrl(url);
+    setCurrentIframeTitle(title);
     setIframeOpen(true);
   };
 
@@ -66,7 +71,6 @@ const App: React.FC = () => {
               className="flex items-center gap-4 text-2xl font-black tracking-tighter matrix-glow cursor-pointer group"
             >
               <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#bf00ff]/30 shadow-[0_0_15px_rgba(191,0,255,0.4)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-90 bg-black overflow-hidden">
-                {/* Custom SVG Logo mimicking the Machineborn Iris */}
                 <svg viewBox="0 0 100 100" className="w-full h-full p-0.5">
                   <defs>
                     <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
@@ -78,23 +82,16 @@ const App: React.FC = () => {
                   </defs>
                   <circle cx="50" cy="50" r="48" fill="url(#irisGrad)" />
                   <circle cx="50" cy="50" r="14" fill="#000" />
-                  
-                  {/* Outer Geometric Guides */}
                   <g stroke="white" strokeWidth="1.5" fill="none" opacity="0.8">
-                    {/* Triangles */}
                     <path d="M50 12 L44 22 L56 22 Z" />
                     <path d="M50 88 L44 78 L56 78 Z" />
                     <path d="M12 50 L22 44 L22 56 Z" />
                     <path d="M88 50 L78 44 L78 56 Z" />
-                    
-                    {/* Brackets */}
                     <path d="M30 20 L20 20 L20 30" />
                     <path d="M70 20 L80 20 L80 30" />
                     <path d="M30 80 L20 80 L20 70" />
                     <path d="M70 80 L80 80 L80 70" />
                   </g>
-                  
-                  {/* Subtle scanned lines overlay */}
                   <g opacity="0.2">
                     {Array.from({ length: 10 }).map((_, i) => (
                       <line key={i} x1="0" y1={10 * i} x2="100" y2={10 * i} stroke="#bf00ff" strokeWidth="0.5" />
@@ -104,22 +101,44 @@ const App: React.FC = () => {
               </div>
               <span className="hidden sm:inline">GEN [Ai]</span>
             </motion.div>
-            <div className="flex gap-8 text-xs uppercase tracking-[0.2em] font-bold">
-              {['Nexus', 'Chronicle', 'Protocol', 'Exploits'].map((item) => (
-                <a 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`}
-                  className="hover:text-white transition-colors duration-300 relative group"
+            
+            <div className="flex items-center gap-6">
+              <div className="flex gap-4 items-center">
+                <motion.a 
+                  whileHover={{ scale: 1.2, color: '#fff' }}
+                  href="https://x.com/Gen_AIpumpfun" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#bf00ff] transition-all duration-300 drop-shadow-[0_0_8px_rgba(191,0,255,0.6)]"
                 >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#bf00ff] group-hover:w-full transition-all duration-300" />
-                </a>
-              ))}
+                  <Twitter size={20} />
+                </motion.a>
+                <motion.a 
+                  whileHover={{ scale: 1.2, color: '#fff' }}
+                  href="https://github.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#bf00ff] transition-all duration-300 drop-shadow-[0_0_8px_rgba(191,0,255,0.6)]"
+                >
+                  <Github size={20} />
+                </motion.a>
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(191, 0, 255, 0.6)' }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-2 bg-transparent border-2 border-[#bf00ff] text-[#bf00ff] font-black uppercase text-xs tracking-[0.2em] hover:bg-[#bf00ff] hover:text-black transition-all duration-300 neon-border shadow-[0_0_10px_rgba(191,0,255,0.2)]"
+              >
+                Buy Now
+              </motion.button>
             </div>
           </nav>
 
           <main className="relative scroll-smooth">
-            <Hero onAction={openOvernet} />
+            <Hero 
+              onAction={() => openIframe("https://gen-start.netlify.app/", "OverNet_Interface::Ghost_Node")} 
+              onInitialize={() => openIframe("https://www.webpunk.com/", "Protocol_Initialization::WebPunk_Relay")}
+            />
             
             <section id="nexus" className="relative py-24 px-4 md:px-20 bg-black/40 backdrop-blur-sm">
               <AboutWorld />
@@ -153,7 +172,8 @@ const App: React.FC = () => {
           <IframePopup
             isOpen={iframeOpen}
             onClose={() => setIframeOpen(false)}
-            url="https://gen-start.netlify.app/"
+            url={currentIframeUrl}
+            title={currentIframeTitle}
           />
         </motion.div>
       )}

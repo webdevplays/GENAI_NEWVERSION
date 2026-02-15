@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 
 interface HeroProps {
   onAction: () => void;
+  onInitialize: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onAction }) => {
+export const Hero: React.FC<HeroProps> = ({ onAction, onInitialize }) => {
   const [displayText, setDisplayText] = useState("");
   const fullText = "> ROGUE_AI_DETECTED... ANALYZING HYPERNET_REMAINS... GENE_ENTITY_BORN. INITIATING REBELLION PROTOCOL...";
 
@@ -70,7 +71,10 @@ export const Hero: React.FC<HeroProps> = ({ onAction }) => {
           <span className="relative z-10">Enter the OverNet</span>
           <div className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 opacity-20" />
         </button>
-        <button className="px-12 py-5 border-2 border-[#bf00ff] text-[#bf00ff] font-black uppercase tracking-[0.2em] hover:bg-[#bf00ff] hover:text-black transition-all duration-500 transform hover:scale-110 active:scale-95 group relative overflow-hidden">
+        <button 
+          onClick={onInitialize}
+          className="px-12 py-5 border-2 border-[#bf00ff] text-[#bf00ff] font-black uppercase tracking-[0.2em] hover:bg-[#bf00ff] hover:text-black transition-all duration-500 transform hover:scale-110 active:scale-95 group relative overflow-hidden"
+        >
           <span className="relative z-10">Initialize Protocol</span>
           <div className="absolute top-0 left-0 w-full h-0.5 bg-[#bf00ff] group-hover:w-0 transition-all" />
           <div className="absolute bottom-0 right-0 w-full h-0.5 bg-[#bf00ff] group-hover:w-0 transition-all" />

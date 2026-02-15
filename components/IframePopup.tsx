@@ -7,9 +7,10 @@ interface IframePopupProps {
   isOpen: boolean;
   onClose: () => void;
   url: string;
+  title?: string;
 }
 
-export const IframePopup: React.FC<IframePopupProps> = ({ isOpen, onClose, url }) => {
+export const IframePopup: React.FC<IframePopupProps> = ({ isOpen, onClose, url, title = "OverNet_Interface::Ghost_Node" }) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -29,7 +30,7 @@ export const IframePopup: React.FC<IframePopupProps> = ({ isOpen, onClose, url }
             <div className="bg-[#bf00ff] text-black px-6 py-3 flex justify-between items-center shrink-0">
               <div className="flex items-center gap-4">
                 <Globe size={18} className="animate-spin-slow" />
-                <span className="text-xs font-black uppercase tracking-[0.3em]">OverNet_Interface::Ghost_Node</span>
+                <span className="text-xs font-black uppercase tracking-[0.3em]">{title}</span>
                 <div className="hidden sm:flex items-center gap-2 bg-black/20 px-3 py-1 rounded-full">
                     <ShieldCheck size={12} />
                     <span className="text-[10px] font-bold">SECURE_TUNNEL_ACTIVE</span>
