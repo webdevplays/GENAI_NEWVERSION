@@ -42,34 +42,40 @@ export const Exploration: React.FC = () => {
           <motion.div 
             key={i}
             whileHover={{ scale: 1.02 }}
-            className="relative bg-black border border-[#bf00ff]/20 overflow-hidden group h-[500px]"
+            className="relative bg-black border border-[#bf00ff]/20 overflow-hidden group h-[650px]"
           >
              <img 
                src={loc.img} 
                alt={loc.name} 
-               className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700 sepia-[0.5] hue-rotate-[90deg]"
+               className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700 contrast-125"
              />
              
-             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
              
-             <div className="absolute top-6 left-6">
-                <span className="text-6xl font-black text-[#bf00ff]/10 group-hover:text-[#bf00ff]/30 transition-colors italic">{loc.id}</span>
+             <div className="absolute top-6 left-6 z-20">
+                <span className="text-6xl font-black text-[#bf00ff]/20 group-hover:text-[#bf00ff]/40 transition-colors italic">{loc.id}</span>
              </div>
 
-             <div className="absolute bottom-0 left-0 w-full p-8 translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                <div className="text-[10px] font-bold text-[#bf00ff] uppercase tracking-[0.4em] mb-2">{loc.type}</div>
-                <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">{loc.name}</h3>
-                <p className="text-[#bf00ff]/70 text-sm font-mono leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity delay-200">
+             <div className="absolute bottom-0 left-0 w-full p-8 z-30 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="text-[10px] font-bold text-[#bf00ff] uppercase tracking-[0.4em] mb-2 bg-black/40 inline-block px-2">
+                   {loc.type}
+                </div>
+                <h3 className="text-4xl font-black text-white uppercase tracking-tighter mb-4 matrix-glow">{loc.name}</h3>
+                <div className="h-0.5 w-12 bg-[#bf00ff] mb-4 group-hover:w-full transition-all duration-700" />
+                <p className="text-[#bf00ff]/90 text-sm font-mono leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity delay-200 bg-black/60 p-3 backdrop-blur-sm border-l-2 border-[#bf00ff]">
                    {loc.desc}
                 </p>
-                <button className="w-full py-3 border border-[#bf00ff]/50 text-[#bf00ff] uppercase font-bold text-xs tracking-widest hover:bg-[#bf00ff] hover:text-black transition-colors">
-                   Inspect Sector
+                <button className="w-full py-4 bg-[#bf00ff]/10 border border-[#bf00ff]/50 text-[#bf00ff] uppercase font-bold text-xs tracking-widest hover:bg-[#bf00ff] hover:text-black transition-all duration-300">
+                   Analyze Metadata
                 </button>
              </div>
 
              {/* Flickering Neon Overlay */}
-             <div className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="w-2 h-2 bg-[#bf00ff] rounded-full animate-pulse shadow-[0_0_10px_#bf00ff]" />
+             <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                <div className="flex flex-col items-end gap-1">
+                   <div className="w-2 h-2 bg-[#bf00ff] rounded-full animate-pulse shadow-[0_0_10px_#bf00ff]" />
+                   <div className="text-[8px] font-mono text-[#bf00ff]">SCANNING...</div>
+                </div>
              </div>
           </motion.div>
         ))}

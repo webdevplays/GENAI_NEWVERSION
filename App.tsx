@@ -12,11 +12,13 @@ import { Footer } from './components/Footer';
 import { LoadingScreen } from './components/LoadingScreen';
 import { CustomCursor } from './components/CustomCursor';
 import { TerminalPopup } from './components/TerminalPopup';
+import { IframePopup } from './components/IframePopup';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [terminalMessage, setTerminalMessage] = useState("");
+  const [iframeOpen, setIframeOpen] = useState(false);
 
   useEffect(() => {
     // Initial loading simulation
@@ -29,6 +31,10 @@ const App: React.FC = () => {
   const triggerTerminal = (message: string) => {
     setTerminalMessage(message);
     setTerminalOpen(true);
+  };
+
+  const openOvernet = () => {
+    setIframeOpen(true);
   };
 
   return (
@@ -113,7 +119,7 @@ const App: React.FC = () => {
           </nav>
 
           <main className="relative scroll-smooth">
-            <Hero onAction={() => triggerTerminal("ACCESS_GRANTED: Initializing Neural Link...")} />
+            <Hero onAction={openOvernet} />
             
             <section id="nexus" className="relative py-24 px-4 md:px-20 bg-black/40 backdrop-blur-sm">
               <AboutWorld />
@@ -142,6 +148,12 @@ const App: React.FC = () => {
             isOpen={terminalOpen} 
             onClose={() => setTerminalOpen(false)} 
             message={terminalMessage}
+          />
+
+          <IframePopup
+            isOpen={iframeOpen}
+            onClose={() => setIframeOpen(false)}
+            url="https://gen-start.netlify.app/"
           />
         </motion.div>
       )}
