@@ -124,13 +124,16 @@ const App: React.FC = () => {
                 </motion.a>
               </div>
 
-              <motion.button
+              <motion.a
+                href="https://pump.fun/coin/Ho6xybJwisnC9XWjL8oYuagEvAbZNnVdrqSRDBF2pump"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(191, 0, 255, 0.6)' }}
                 whileTap={{ scale: 0.95 }}
                 className="px-3 md:px-6 py-1.5 md:py-2 bg-transparent border-2 border-[#bf00ff] text-[#bf00ff] font-black uppercase text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] hover:bg-[#bf00ff] hover:text-black transition-all duration-300 neon-border shadow-[0_0_10px_rgba(191,0,255,0.2)]"
               >
                 Buy Now
-              </motion.button>
+              </motion.a>
             </div>
           </nav>
 
