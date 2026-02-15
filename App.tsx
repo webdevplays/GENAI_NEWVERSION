@@ -43,7 +43,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-black text-[#bf00ff] overflow-hidden selection:bg-[#bf00ff] selection:text-black">
+    <div className="relative min-h-screen bg-black text-[#bf00ff] overflow-x-hidden selection:bg-[#bf00ff] selection:text-black">
       <AnimatePresence>
         {loading && <LoadingScreen key="loading" />}
       </AnimatePresence>
@@ -64,13 +64,13 @@ const App: React.FC = () => {
 
           <CustomCursor />
 
-          <nav className="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center mix-blend-difference">
+          <nav className="fixed top-0 left-0 w-full z-50 p-4 md:p-6 flex justify-between items-center mix-blend-difference bg-black/20 backdrop-blur-sm md:bg-transparent">
             <motion.div 
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              className="flex items-center gap-4 text-2xl font-black tracking-tighter matrix-glow cursor-pointer group"
+              className="flex items-center gap-2 md:gap-4 text-xl md:text-2xl font-black tracking-tighter matrix-glow cursor-pointer group shrink-0"
             >
-              <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#bf00ff]/30 shadow-[0_0_15px_rgba(191,0,255,0.4)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-90 bg-black overflow-hidden">
+              <div className="relative w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#bf00ff]/30 shadow-[0_0_15px_rgba(191,0,255,0.4)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-90 bg-black overflow-hidden">
                 <svg viewBox="0 0 100 100" className="w-full h-full p-0.5">
                   <defs>
                     <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
@@ -99,11 +99,11 @@ const App: React.FC = () => {
                   </g>
                 </svg>
               </div>
-              <span className="hidden sm:inline">GEN [Ai]</span>
+              <span className="hidden xs:inline">GEN [Ai]</span>
             </motion.div>
             
-            <div className="flex items-center gap-6">
-              <div className="flex gap-4 items-center">
+            <div className="flex items-center gap-3 md:gap-6">
+              <div className="flex gap-3 md:gap-4 items-center">
                 <motion.a 
                   whileHover={{ scale: 1.2, color: '#fff' }}
                   href="https://x.com/Gen_AIpumpfun" 
@@ -111,7 +111,7 @@ const App: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-[#bf00ff] transition-all duration-300 drop-shadow-[0_0_8px_rgba(191,0,255,0.6)]"
                 >
-                  <Twitter size={20} />
+                  <Twitter size={18} className="md:w-5 md:h-5" />
                 </motion.a>
                 <motion.a 
                   whileHover={{ scale: 1.2, color: '#fff' }}
@@ -120,14 +120,14 @@ const App: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-[#bf00ff] transition-all duration-300 drop-shadow-[0_0_8px_rgba(191,0,255,0.6)]"
                 >
-                  <Github size={20} />
+                  <Github size={18} className="md:w-5 md:h-5" />
                 </motion.a>
               </div>
 
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(191, 0, 255, 0.6)' }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-2 bg-transparent border-2 border-[#bf00ff] text-[#bf00ff] font-black uppercase text-xs tracking-[0.2em] hover:bg-[#bf00ff] hover:text-black transition-all duration-300 neon-border shadow-[0_0_10px_rgba(191,0,255,0.2)]"
+                className="px-3 md:px-6 py-1.5 md:py-2 bg-transparent border-2 border-[#bf00ff] text-[#bf00ff] font-black uppercase text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] hover:bg-[#bf00ff] hover:text-black transition-all duration-300 neon-border shadow-[0_0_10px_rgba(191,0,255,0.2)]"
               >
                 Buy Now
               </motion.button>
@@ -140,23 +140,23 @@ const App: React.FC = () => {
               onInitialize={() => openIframe("https://www.webpunk.com/", "Protocol_Initialization::WebPunk_Relay")}
             />
             
-            <section id="nexus" className="relative py-24 px-4 md:px-20 bg-black/40 backdrop-blur-sm">
+            <section id="nexus" className="relative py-16 md:py-24 px-6 md:px-20 bg-black/40 backdrop-blur-sm">
               <AboutWorld />
             </section>
 
-            <section id="chronicle" className="relative py-24 px-4 md:px-20 bg-black/60">
+            <section id="chronicle" className="relative py-16 md:py-24 px-6 md:px-20 bg-black/60">
               <GameOverview />
             </section>
 
-            <section id="protocol" className="relative py-24 px-4 md:px-20">
+            <section id="protocol" className="relative py-16 md:py-24 px-6 md:px-20">
               <KeyFeatures />
             </section>
 
-            <section className="relative py-32 px-4 flex flex-col items-center justify-center overflow-hidden">
+            <section className="relative py-20 md:py-32 px-4 flex flex-col items-center justify-center overflow-hidden">
                <LoreOrb />
             </section>
 
-            <section id="exploits" className="relative py-24 px-4 md:px-20 bg-black/60">
+            <section id="exploits" className="relative py-16 md:py-24 px-6 md:px-20 bg-black/60">
               <Exploration />
             </section>
 
