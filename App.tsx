@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Twitter, Github } from 'lucide-react';
@@ -99,7 +98,7 @@ const App: React.FC = () => {
                   </g>
                 </svg>
               </div>
-              <span className="hidden xs:inline">GEN [Ai]</span>
+              <span className="hidden xs:inline">GEN Ai</span>
             </motion.div>
             
             <div className="flex items-center gap-3 md:gap-6">

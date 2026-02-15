@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -35,10 +34,10 @@ export const Hero: React.FC<HeroProps> = ({ onAction, onInitialize }) => {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          data-text="GEN [Ai]"
+          data-text="GEN Ai"
           className="glitch text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter matrix-glow relative z-10 uppercase italic break-words"
         >
-          GEN [Ai]
+          GEN Ai
         </motion.h1>
         
         {/* Frame Decoration - Hidden on very small screens to prevent overflow */}

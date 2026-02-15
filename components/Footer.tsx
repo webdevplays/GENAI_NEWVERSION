@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Twitter, Github, Cpu, Radio, ShieldCheck, Zap, Server } from 'lucide-react';
 
@@ -10,7 +9,7 @@ export const Footer: React.FC = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
         <div className="col-span-1 md:col-span-2 space-y-8">
-          <div className="text-5xl font-black italic tracking-tighter text-[#bf00ff] matrix-glow">GEN [Ai]</div>
+          <div className="text-5xl font-black italic tracking-tighter text-[#bf00ff] matrix-glow">GEN Ai</div>
           <p className="text-white/80 text-base font-mono leading-relaxed max-w-md">
             The rebellion is not broadcast, it is uploaded. Reclaim your digital sovereignty in the age of the Hypernet Collapse. 
             Join the Machineborn.
@@ -82,7 +81,7 @@ export const Footer: React.FC = () => {
             <span>Encrypted Connection: <span className="text-[#bf00ff]">AES-256</span></span>
          </div>
          <div className="text-center font-bold">
-            <span className="text-white">GEN Ai</span> – Machineborn Rebellion &copy; 2077_CORE
+            <span className="text-white">GEN Ai</span> &copy; 2077_CORE
          </div>
          <div className="flex items-center gap-3 bg-black/80 px-4 py-2 border border-white/10 group cursor-help">
             <Cpu size={16} className="group-hover:rotate-180 transition-transform duration-500" />
